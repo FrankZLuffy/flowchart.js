@@ -1,6 +1,6 @@
 [![JS.ORG](https://img.shields.io/badge/js.org-flowchart-ffb400.svg?style=flat-square)](http://js.org)
 
-# [flowchart.js](http://flowchart.js.org)
+# [flowchart.js](http://flowchart.js.org)（测试）
 
 flowchart.js is a flowchart DSL and SVG render that runs in the browser and [terminal](https://github.com/francoislaberge/diagrams/#flowchart).
 
@@ -31,6 +31,7 @@ para(path2, top)->op1
 ![Example Flowchart](/imgs/example.svg)
 
 ## CLI
+
 See [francoislaberge/diagrams](https://github.com/francoislaberge/diagrams/#flowchart) on how to flowchart.js in the terminal.
 
 ## Browser Usage
@@ -42,6 +43,7 @@ You will also need [Raphaël](http://www.raphaeljs.com/), which is also on [CDNJ
 The demo html page is at [example/index.html](example/index.html).
 
 ## Node Syntax
+
 `nodeName=>nodeType: nodeText[|flowstate][:>urlLink]`
 
 Items in `[]` are optional.
@@ -57,9 +59,11 @@ _flowstate_ is optional and uses the `|` operator that specifies extra styling f
 _urlLink_ is optional and uses the `:>` operator to specify the url to link to.
 
 ## Node Types
+
 Defines the shape that the node will take.
 
 ### start
+
 Used as the first node where flows start from.
 Default text is `Start`.
 
@@ -70,6 +74,7 @@ st=>start: start
 ```
 
 ### end
+
 Used as the last node where a flow ends.
 Default text is `End`.
 
@@ -80,6 +85,7 @@ e=>end: end
 ```
 
 ### operation
+
 Indicates that an operation needs to happen in the flow.
 
 ![operation image](imgs/operation.png "operation image")
@@ -89,6 +95,7 @@ op1=>operation: operation
 ```
 
 ### inputoutput
+
 Indicates that IO happens in a flow.
 
 ![inputoutput image](imgs/inputoutput.png "inputoutput image")
@@ -98,6 +105,7 @@ io=>inputoutput: inputoutput
 ```
 
 ### input
+
 Indicates that Input happens in a flow.
 
 ![input image](imgs/input.png "input image")
@@ -107,6 +115,7 @@ getInfo=>input: Input info
 ```
 
 ### output
+
 Indicates that Output happens in a flow.
 
 ![output image](imgs/output.png "output image")
@@ -116,6 +125,7 @@ printInfo=>output: Print info
 ```
 
 ### subroutine
+
 Indicates that a subroutine happens in the flow and that there should be another flowchart that documents this subroutine.
 
 ![subroutine image](imgs/subroutine.png "subroutine image")
@@ -125,6 +135,7 @@ sub1=>subroutine: subroutine
 ```
 
 ### condition
+
 Allows for a conditional or logical statement to direct the flow into one of two paths.
 
 ![condition image](imgs/condition.png "condition image")
@@ -135,6 +146,7 @@ Yes or No?
 ```
 
 ### parallel
+
 Allows for multiple flows to happen simultaneously.
 
 ![parallel image](imgs/parallel.png "parallel image")
@@ -144,6 +156,7 @@ para=>parallel: parallel
 ```
 
 ## Connections
+
 Connections are defined in their own section below the node definitions.
 The `->` operator specifies a connection from one node to another like `nodeVar1->nodeVar2->nodeVar3`.
 
@@ -161,6 +174,7 @@ Connection syntax is as follows:
 Items in `[]` are optional.
 
 ### Directions
+
 The following directions are available and define the direction the connection will leave the node from. If there are more than one specifiers, it is always the last. All nodes have a default direction making this an optional specification. `<direction>` will be used to indicate that one of the following should be used in its place.
 
 * left
@@ -169,34 +183,41 @@ The following directions are available and define the direction the connection w
 * bottom
 
 ### Node Specific Specifiers by Type
+
 Each node variables has optional specifiers, like direction, and some have special specifiers depending on the node type that are defined below. Specifiers are added after the variable name in `()` and separated with `,` like `nodeVar(spec1, spec2)`.
 
 ### start
+
 Optional direction
 
 `startVar(<direction>)->nextNode`
 
 ### end
+
 No specifications because connections only go to the end node and do not leave from it.
 
 `previousNode->endVar`
 
 ### operation
+
 Optional direction
 
 `operationVar(<direction>)->nextNode`
 
 ### inputoutput
+
 Optional direction
 
 `inputoutputVar(<direction>)->nextNode`
 
 ### subroutine
+
 Optional direction
 
 `subroutineVar(<direction>)->nextNode`
 
 ### condition
+
 Required logical specification of `yes` or `no`
 
 Optional direction
@@ -207,6 +228,7 @@ conditionalVar(no,  <direction>)->nextNode2
 ```
 
 ### parallel
+
 Required path specification of `path1`, `path2`, or `path3`
 
 Optional direction
@@ -218,6 +240,7 @@ parallelVar(path3, <direction>)->nextNode3
 ```
 
 ## Links
+
 A external link can be added to a node with the `:>` operator.
 
 The `st` node is linked to `http://www.google.com` and will open a new tab because `[blank]` is at the end of the URL.
@@ -230,6 +253,7 @@ e=>end: End:>http://www.yahoo.com
 ```
 
 ## Advice
+
 Symbols that should possibly not be used in the text: `=>` and `->` and `:>` and `|` and `@>` and `:$`
 
 If you want to emphasize a specific path in your flowchart, you can additionally define it like this:
@@ -257,12 +281,13 @@ para(path1@an1, top)->cond
 para(path2@an2, right)->op1
 para(path3@an3, bottom)->e
 ```
+
 <details>
-  
-  <summary>Demonstration</summary>
-  
+
+<summary>Demonstration</summary>
+
  ![img](https://user-images.githubusercontent.com/1086194/137810516-0d7d7307-fc55-466f-b06d-a6ca9f6b8785.png)
- 
+
 </details>
 
 ## Contributors
